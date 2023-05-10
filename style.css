@@ -1,0 +1,126 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    
+  }
+
+  @font-face {
+    font-family: "Tagada";
+    src: url("fonts/tagada.otf") format("otf");
+  }
+
+  @font-face {
+    font-family: "Asfalt";
+    src: url("fonts/asfalt.otf") format("otf");
+  }
+
+  .type {
+    position: absolute;
+    color: #000000;
+    -webkit-text-stroke: 0.03px black;
+    /* webkit:grayscale, antialisaing,they are both fontsmoothing */
+  }
+
+  #garden {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+
+  #controls {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+    border: 1px solid gray;
+    padding: 10px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+    background-color: white;
+  }
+
+  #controls .shape-specific {
+    display: none;
+    flex-direction: column;
+  }
+
+  #controls .shape-specific div {
+    display: flex;
+    gap: 10px;
+  }
+
+  .input-range {
+    display: flex;
+    flex-direction: column;
+  }
+
+  datalist {
+    display: flex;
+    justify-content: space-between;
+    font-size: smaller;
+  }
+  #controls
+    input[type="radio"][value="asfalt"]:checked
+    ~ #rectangle-params {
+    display: flex;
+  }
+
+  #controls
+    input[type="radio"][value="tagada"]:checked
+    ~ #rectangle-params {
+    display: flex;
+  }
+
+ input, button, label {
+      font-family: helvetica, sans-serif;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: .25px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100px;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    outline: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  button {
+    background-color: #000;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0px 0px;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+
+  button:hover {
+    background-color: #CAE4F1;
+  }
