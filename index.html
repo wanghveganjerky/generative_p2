@@ -11,6 +11,9 @@
   <body>
     <div id="garden"></div>
     <div id="controls">
+      <div>
+        <input type="radio" id="A" class = "hide" name="type" value="0" checked />
+      </div>
       <canvas id="myCanvas" width="1" height="1"></canvas>
       <br> Select a font:<br />
       <input type="radio" id="tagada" name="shape" value="tagada" checked />
@@ -18,10 +21,10 @@
       <br />
       <input type="radio" id="asfalt" name="shape" value="asfalt"  />
       <label for="asfalt">Asfalt</label>
-      <br />
-      key press<br />
-      <div>
-        <input type="radio" id="A" name="type" value="0" checked />
+      <!-- <br />
+      key press<br /> -->
+      <!-- <div>
+        <input type="radio" id="A" name="type" value="0" checked /> -->
         <!-- <label for="type">A</label>
         <input type="radio" id="b" name="type" value="B" />
         <label for="type">B</label>
@@ -103,7 +106,7 @@
         <label for="type">@</label>
         <input type="radio" id="#" name="type" value="#" />
         <label for="type">#</label> -->
-      </div>
+      <!-- </div> -->
       <div class="shape-specific" id="rectangle-params">
         Type parameters:
         <div>
@@ -113,7 +116,7 @@
               type="range"
               id="width"
               name="width"
-              value="50"
+              value="10"
               min="1"
               max="300"
               step="10"
@@ -121,7 +124,7 @@
             />
             <datalist id="tickmarks-width">
               <option value="1" label="1px"></option>
-              <option value="50" label="50px"></option>
+              <option value="150" label="150px"></option>
               <option value="100" label="300px"></option>
             </datalist>
           </div>
@@ -133,7 +136,7 @@
               type="range"
               id="height"
               name="height"
-              value="50"
+              value="10"
               min="1"
               max="300"
               step="10"
@@ -141,7 +144,7 @@
             />
             <datalist id="tickmarks-height">
               <option value="1" label="1px"></option>
-              <option value="50" label="50px"></option>
+              <option value="150" label="150px"></option>
               <option value="300" label="300px"></option>
             </datalist>
           </div>
