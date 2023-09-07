@@ -165,7 +165,7 @@ export default class Garden {
     // Special case for descenders
     const descenders = ['g', 'j', 'q', 'y', 'p'];
     if (descenders.includes(this.activeShape.value.toLowerCase())) {
-        this.activeShapeEl.style.borderBottom = '0.2em solid transparent';  // adjust as needed
+        this.activeShapeEl.style.borderBottom = '-0.2em solid transparent';  // adjust as needed
         this.activeShapeEl.style.lineHeight = '0.8em'; // adjust as needed
     }
     else {
