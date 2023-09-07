@@ -161,7 +161,7 @@ export default class Garden {
     //special case
     const descenders = ['g', 'j', 'q', 'y','p'];
     if (descenders.includes(this.activeShape.value.toLowerCase())) {
-      this.activeShapeEl.style.lineHeight = "0.4";  // or any value that works
+      this.activeShapeEl.style.lineHeight = "0.001";  // or any value that works
       this.activeShapeEl.style.verticalAlign = "bottom";  // or "sub" or any value that works
     } else {
       this.activeShapeEl.style.lineHeight = "normal";
