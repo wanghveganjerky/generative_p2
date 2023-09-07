@@ -152,10 +152,7 @@ export default class Garden {
   renderShape() {
     if (this.activeShapeEl === null) {
       this.activeShapeEl = document.createElement("div");
-      this.activeShapeEl.innerHTML = this.activeShape.value;
       this.gardenEl.appendChild(this.activeShapeEl);
-      // ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
     }
 
     //special case
