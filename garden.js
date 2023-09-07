@@ -166,7 +166,7 @@ export default class Garden {
     const descenders = ['g', 'j', 'q', 'y', 'p'];
     if (descenders.includes(this.activeShape.value.toLowerCase())) {
         span.style.display = 'inline-block';
-        span.style.transform = 'translateY(-0.1em)';  // adjust as needed
+        span.style.transform = 'translateY(-0.2em)';  // adjust as needed
     }
   
     // Append the span to the div
