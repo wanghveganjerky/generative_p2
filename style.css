@@ -16,10 +16,40 @@ body {
     src: url("fonts/asfalt.otf") format("otf");
   }
 
+  /* .infoButton {
+    position: relative;
+    left: 20%;
+  } */
+  .toolInfo {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .toolInfo .toolInfoText {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position above the text */
+    left: 50%;
+    margin-left: -60px; /* Center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .toolInfo:hover .toolInfoText {
+    visibility: visible;
+    opacity: 1;
+  }
+  
   .type {
     position: absolute;
     color: #000000;
-    -webkit-text-stroke: 0.03px black;
+    /* -webkit-text-stroke: 0.03px black; */
     /* webkit:grayscale, antialisaing,they are both fontsmoothing */
   }
 
@@ -128,5 +158,7 @@ body {
   }
 
   button:hover {
-    background-color: #CAE4F1;
+    background-color: black;
   }
+
+  

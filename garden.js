@@ -1,19 +1,8 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
-var saveButton = document.getElementById("saveButton");
-saveButton.addEventListener("click", function() {
-  // Create a data URL from the canvas
-  var dataURL = canvas.toDataURL("image/png");
 
-  // Create a link element with the data URL as its href
-  var link = document.createElement("a");
-  link.download = "canvas.png";
-  link.href = dataURL;
 
-  // Click the link to download the image
-  link.click();
-});
 
 export default class Garden {
   constructor(gardenEl, controlsEl) {
@@ -23,6 +12,7 @@ export default class Garden {
     this.mousePos = { x: 0, y: 0 };
     this.activeShapeEl = null;
     this.initInteraction();
+    this.activeShape.color = "#000000";
   }
 
   initInteraction() {
@@ -45,10 +35,16 @@ export default class Garden {
     let inputEls = this.controlsEl.querySelectorAll("input");
     inputEls.forEach((el) => {
       el.addEventListener("input", (e) => {
-        this.setShape(e.target);
+        if (e.target.id !== 'color') { // Prevent resetting shape when color is changed
+          this.setShape(e.target);
+        } else {
+          this.setBackgroundColor();
+        }
         this.renderShape();
       });
     });
+
+    
 
     //Add keydown event listener to document
     // document.addEventListener("keydown", (e) => {
@@ -61,16 +57,19 @@ export default class Garden {
     //   }
     // });
   }
-
+  setBackgroundColor() {
+    this.gardenEl.style.backgroundColor = this.controlsEl.querySelector("#color").value;
+  }
   setShape(el) {
-    this.activeShape = {};
-    this.gardenEl.style.backgroundColor =
-    this.controlsEl.querySelector("#color").value;
     this.activeShape.width = this.controlsEl.querySelector("#width").value;
     this.activeShape.height = this.controlsEl.querySelector("#height").value;
     this.activeShape.rotate = this.controlsEl.querySelector("#rotate").value;
     this.activeShape.skew = this.controlsEl.querySelector("#skew").value;
-    this.activeShape.value = el.value;
+    this.activeShape.color = this.controlsEl.querySelector("#fontColor").value;
+    
+    if (el.type === "text" || el.type === "radio" || el.type === "checkbox") {
+      this.activeShape.value = el.value;
+    }
     
 
     const keyMap = {
@@ -137,9 +136,6 @@ export default class Garden {
       y: { value: "y", type: "tagada" },
       z: { value: "z", type: "tagada" },
 
-
-
-
     };
     
     for (let key in keyMap) {
@@ -157,9 +153,22 @@ export default class Garden {
     if (this.activeShapeEl === null) {
       this.activeShapeEl = document.createElement("div");
       this.activeShapeEl.innerHTML = this.activeShape.value;
-      console.log(this.activeShape.value);
       this.gardenEl.appendChild(this.activeShapeEl);
+      // ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
     }
+
+    //special case
+    const descenders = ['g', 'j', 'q', 'y','p'];
+    if (descenders.includes(this.activeShape.value.toLowerCase())) {
+      this.activeShapeEl.style.lineHeight = "0.4";  // or any value that works
+      this.activeShapeEl.style.verticalAlign = "bottom";  // or "sub" or any value that works
+    } else {
+      this.activeShapeEl.style.lineHeight = "normal";
+      this.activeShapeEl.style.verticalAlign = "baseline";
+    }
+
+    this.activeShapeEl.style.color = this.activeShape.color; 
     this.activeShapeEl.classList.add("type");
     this.activeShapeEl.style.left =
       this.mousePos.x - this.activeShape.width / 2 + "px";
@@ -195,5 +204,23 @@ export default class Garden {
     this.gardenEl.innerHTML = "";
     this.activeShapeEl = null;
     this.renderShape();
+    
   }
 }
+
+document.getElementById('fontColor').addEventListener('input', function() {
+  let selectedFontColor = this.value;
+  gardenInstance.activeShape.color = selectedFontColor;
+  gardenInstance.renderShape();
+});
+
+
+var saveButton = document.getElementById("saveButton");
+saveButton.addEventListener("click", function() {
+  var dataURL = canvas.toDataURL("image/png");
+  var link = document.createElement("a");
+  link.download = "canvas.png";
+  link.href = dataURL;
+  link.click();
+});
+

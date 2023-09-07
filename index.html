@@ -9,107 +9,31 @@
   </head>
   
   <body>
+
     <div id="garden"></div>
     <div id="controls">
       <div>
         <input type="radio" id="A" class = "hide" name="type" value="0" checked />
       </div>
       <canvas id="myCanvas" width="1" height="1"></canvas>
-      <br> Select a font:<br />
-      <input type="radio" id="tagada" name="shape" value="tagada" checked />
-      <label for="tagada">Tagada</label>
+     
+      <!-- <br> Select a font:<br /> -->
+      <input type="radio" id="tagada" name="shape" value="tagada" checked style="display: none;" />
+
+      <!-- <label for="tagada">Tagada</label> -->
       <br />
-      <input type="radio" id="asfalt" name="shape" value="asfalt"  />
-      <label for="asfalt">Asfalt</label>
-      <!-- <br />
-      key press<br /> -->
-      <!-- <div>
-        <input type="radio" id="A" name="type" value="0" checked /> -->
-        <!-- <label for="type">A</label>
-        <input type="radio" id="b" name="type" value="B" />
-        <label for="type">B</label>
-        <input type="radio" id="C" name="type" value="C" />
-        <label for="type">C</label>
-        <input type="radio" id="D" name="type" value="D" />
-        <label for="type">D</label>
-        <input type="radio" id="E" name="type" value="E" />
-        <label for="type">E</label>
-        <br />
-        <input type="radio" id="F" name="type" value="F" />
-        <label for="type">F</label>
-        <input type="radio" id="G" name="type" value="G" />
-        <label for="type">G</label>
-        <input type="radio" id="H" name="type" value="H" />
-        <label for="type">H</label>
-        <input type="radio" id="I" name="type" value="I" />
-        <label for="type">I</label>
-        <input type="radio" id="J" name="type" value="J" />
-        <label for="type">J</label>
-        <input type="radio" id="K" name="type" value="K" />
-        <label for="type">K</label>
-        <br />
-        <input type="radio" id="L" name="type" value="L" />
-        <label for="type">L</label>
-        <input type="radio" id="M" name="type" value="M" />
-        <label for="type">M</label>
-        <input type="radio" id="N" name="type" value="N" />
-        <label for="type">N</label>
-        <input type="radio" id="O" name="type" value="O" />
-        <label for="type">O</label>
-        <input type="radio" id="P" name="type" value="P" />
-        <label for="type">P</label>
-        <br />
-        <input type="radio" id="Q" name="type" value="Q" />
-        <label for="type">Q</label>
-        <input type="radio" id="R" name="type" value="R" />
-        <label for="type">R</label>
-        <input type="radio" id="S" name="type" value="S" />
-        <label for="type">S</label>
-        <input type="radio" id="T" name="type" value="T" />
-        <label for="type">T</label>
-        <input type="radio" id="U" name="type" value="U" />
-        <label for="type">U</label>
-        <br />
-        <input type="radio" id="V" name="type" value="V" />
-        <label for="type">V</label>
-        <input type="radio" id="W" name="type" value="W" />
-        <label for="type">W</label>
-        <input type="radio" id="X" name="type" value="X" />
-        <label for="type">X</label>
-        <input type="radio" id="Y" name="type" value="Y" />
-        <label for="type">Y</label>
-        <input type="radio" id="Z" name="type" value="Z" />
-        <label for="type">Z</label>
-        <br />
-        <input type="radio" id="0" name="type" value="0" />
-        <label for="type">0</label>
-        <input type="radio" id="1" name="type" value="1" />
-        <label for="type">1</label>
-        <input type="radio" id="2" name="type" value="2" />
-        <label for="type">2</label>
-        <input type="radio" id="3" name="type" value="3" />
-        <label for="type">3</label>
-        <input type="radio" id="4" name="type" value="4" />
-        <label for="type">4</label>
-        <input type="radio" id="5" name="type" value="5" />
-        <label for="type">5</label>
-        <br />
-        <input type="radio" id="7" name="type" value="7" />
-        <label for="type">7</label>
-        <input type="radio" id="8" name="type" value="8" />
-        <label for="type">8</label>
-        <input type="radio" id="9" name="type" value="9" />
-        <label for="type">9</label>
-        <input type="radio" id="!" name="type" value="!" />
-        <label for="type">!</label>
-        <input type="radio" id="@" name="type" value="@" />
-        <label for="type">@</label>
-        <input type="radio" id="#" name="type" value="#" />
-        <label for="type">#</label> -->
-      <!-- </div> -->
+      <!-- <input type="radio" id="asfalt" name="shape" value="asfalt"  />
+      <label for="asfalt">Asfalt</label> -->
+   
       <div class="shape-specific" id="rectangle-params">
-        Type parameters:
+       
         <div>
+          <label for="color">Background Color</label>
+          <input type="color" id="color" name="color" value="#808080" />
+        </div>
+  
+        <div>
+          
           <label for="width">Width</label>
           <div class="input-range">
             <input
@@ -189,17 +113,22 @@
             </datalist>
           </div>
         </div>
-        <div>
-          <label for="color">Color</label>
-          <input type="color" id="color" name="color" value="#808080" />
-        </div>
+     
+        
       </div>
+      <div>
+        <label for="fontColor">Font Color</label>
+        <input type="color" id="fontColor" name="fontColor" value="#000000" /> <!-- default is black -->
+    </div>
       <br />
       <button id="clear">Clear</button>
-      <button id="saveButton">Save Canvas as PNG</button>
+      <div class="toolInfo">
+        <button id="infoButton">Tips</button>
+        <span class="toolInfoText">support all numbers, upper and lower cap letters</span>
+      </div>
+      <button id="saveButton">Save Image</button>
     </div>
 
-    
 
     <script type="module">
       import Garden from "./garden.js";
